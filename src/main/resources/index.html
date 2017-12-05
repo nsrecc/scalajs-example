@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Scala.js Example</title>
+</head>
+<body>
+    <script type="text/javascript" src="../scalajs-example-fastopt.js"></script>
+    <script type="text/javascript" src="/workbench.js"></script>
+
+    <h1>Scala.js Example</h1>
+
+    <div>
+        <div id="match_list">
+
+        </div>
+        <script>
+            example.ScalaJSExample().matchList(document.getElementById('match_list'));
+        </script>
+
+        <div>
+            <p>
+                HTML --> Scala.js Text Mirror
+            </p>
+            <input id="mirror">
+            <div id="mirror_output">
+
+            </div>
+            <div id="mirror_output2">
+
+            </div>
+        </div>
+        <script>
+            example.ScalaJSExample().mirror(document.getElementById('mirror'), document.getElementById('mirror_output'));
+            example.ScalaJSExample().mirror(document.getElementById('mirror_output2'));
+        </script>
+
+        <div>
+            <p>
+                HTML --> Scala.js Two Integer Math
+            </p>
+            <form onsubmit="sendMath('num1', 'math_symbol', 'num2'); return false;">
+                <input id="num1" type="number" required>
+                <select id="math_symbol">
+                    <option value="*">*</option>
+                    <option value="/">/</option>
+                    <option value="+">+</option>
+                    <option value="-">-</option>
+                    <option value="%">%</option>
+                </select>
+                <input id="num2" type="number" required>
+                <input type="submit" value="Compute math!">
+            </form>
+            <div id="computed_math">
+
+            </div>
+        </div>
+        <script>
+            function sendMath(a, b, c) {
+                num1 = document.getElementById(a);
+                mathSym = document.getElementById(b);
+                num2 = document.getElementById(c);
+                example.computeMath(num1, mathSym, num2, document.getElementById('computed_math'));
+            }
+        </script>
+
+        <div id="two_int_math">
+
+        </div>
+        <script>
+            example.computeMath(document.getElementById('two_int_math'));
+        </script>
+    </div>
+</body>
+</html>
